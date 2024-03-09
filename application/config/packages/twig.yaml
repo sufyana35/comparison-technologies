@@ -1,8 +1,6 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
-        vat: '%env(resolve:VAT)%'
-        upload_directory: '%env(resolve:UPLOAD_DIRECTORY)%'
 
 when@test:
     twig:

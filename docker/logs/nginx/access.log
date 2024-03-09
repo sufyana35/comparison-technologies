@@ -1,0 +1,5 @@
+172.18.0.1 - - [09/Mar/2024:17:24:10 +0000] "GET /admin/google HTTP/1.1" 200 463 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+172.18.0.1 - - [09/Mar/2024:17:24:10 +0000] "GET /favicon.ico HTTP/1.1" 200 463 "http://www.dev.dhsspares.co.uk/admin/google" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+172.18.0.1 - - [09/Mar/2024:17:24:12 +0000] "GET /images/branding/googlelogo/2x/googlelogo_color_92x30dp.png HTTP/1.1" 200 463 "http://www.dev.dhsspares.co.uk/admin/google" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+172.18.0.1 - - [09/Mar/2024:17:24:20 +0000] "GET / HTTP/1.1" 200 463 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+172.18.0.1 - - [09/Mar/2024:17:24:20 +0000] "GET /favicon.ico HTTP/1.1" 200 463 "http://www.dev.dhsspares.co.uk/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block body %}
+<main role="main" class="container mt-4">
+    <div class="jumbotron">
+        <h1>Calculate the minimum number of standard UK denomination coins needed to equal that amount</h1>
+        <p class="lead mt-4">UK coins: £2, £1, 50p, 20p, 2p and 1p coins.</p>
+
+        {{ form_start(coinCalculatorForm) }}
+            <div class="my-custom-class-for-errors">
+                {% for error in errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </div>
+
+            <div class="row mt-4">
+                <div class="col">
+                    {{ form_label(coinCalculatorForm.amountInput) }}
+                    {{ form_widget(coinCalculatorForm.amountInput) }}
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col">
+                    {{ form_widget(coinCalculatorForm.submit) }}
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="row">
+                        <p>£2</p>
+                    </div>
+                    <div class="row">
+                        {{ coinCalculatorForm.vars.value.twoPounds }}
+                    </div>
+                </div>
+                <div class="col">
+                    {{ coinCalculatorForm.vars.value.onePounds }}
+                </div>
+                <div class="col">
+                    {{ coinCalculatorForm.vars.value.fiftyPences }}
+                </div>
+                <div class="col">
+                    {{ coinCalculatorForm.vars.value.twentyPences }}
+                </div>
+                <div class="col">
+                    {{ coinCalculatorForm.vars.value.twoPences }}
+                </div>
+                <div class="col">
+                    {{ coinCalculatorForm.vars.value.onePences }}
+                </div>
+            </div>
+        {{ form_end(coinCalculatorForm) }}
+    </div>
+</main>
+{% endblock %}

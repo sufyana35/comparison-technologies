@@ -1,4 +1,4 @@
 login:
-    path: coinCalculator
-    controller: App\Controller\CoinCalculatorController::login
+    path: coin_calculator
+    controller: App\Controller\CoinCalculatorController::coinCalculator
     methods: GET|POST

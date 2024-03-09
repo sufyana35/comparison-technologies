@@ -1,0 +1,8 @@
+2024/03/09 17:23:53 [warn] 1#1: server name "*.showerspares.com/" has suspicious symbols in /etc/nginx/sites-available/default.conf:4
+2024/03/09 17:25:18 [warn] 1#1: server name "*.showerspares.com/" has suspicious symbols in /etc/nginx/sites-available/default.conf:4
+2024/03/09 17:28:58 [warn] 1#1: server name "*.showerspares.com/" has suspicious symbols in /etc/nginx/sites-available/default.conf:4
+2024/03/09 18:47:02 [warn] 1#1: server name "*.showerspares.com/" has suspicious symbols in /etc/nginx/sites-available/default.conf:4
+2024/03/09 18:47:07 [error] 29#29: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.19.0.1, server: *.dhsspares.co.uk, request: "GET /coinCalculator HTTP/1.1", upstream: "fastcgi://172.19.0.2:9000", host: "www.dev.dhsspares.co.uk"
+2024/03/09 18:47:07 [error] 29#29: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.19.0.1, server: *.dhsspares.co.uk, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.19.0.2:9000", host: "www.dev.dhsspares.co.uk", referrer: "http://www.dev.dhsspares.co.uk/coinCalculator"
+2024/03/09 18:47:09 [error] 29#29: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.19.0.1, server: *.dhsspares.co.uk, request: "GET /coinCalculator HTTP/1.1", upstream: "fastcgi://172.19.0.2:9000", host: "www.dev.dhsspares.co.uk"
+2024/03/09 18:47:09 [error] 29#29: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.19.0.1, server: *.dhsspares.co.uk, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.19.0.2:9000", host: "www.dev.dhsspares.co.uk", referrer: "http://www.dev.dhsspares.co.uk/coinCalculator"

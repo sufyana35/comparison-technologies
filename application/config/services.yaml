@@ -1,0 +1,53 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    upload_directory: '%env(resolve:UPLOAD_DIRECTORY)%'
+    whitelist_ip:
+        - '%env(LOCAL_IP)%'
+        - 172.24.0.1
+        - 18.132.169.70
+        - 52.56.120.66
+        - 185.63.82.105
+        - 77.76.0.0/16
+        - 77.221.0.0/16
+        - 82.118.0.0/16
+        - 51.142.250.0/24
+        - 62.105.177.0/24
+        - 62.121.7.0/24
+        - 79.141.141.0/24
+        - 80.175.25.0/24
+        - 81.3.66.0/24
+        - 81.3.67.0/24
+        - 81.3.68.0/24
+        - 81.3.69.0/24
+        - 154.51.187.0/24
+        - 154.60.77.0/24
+        - 154.60.78.0/24
+        - 154.62.176.0/24
+        - 154.62.177.0/24
+        - 154.62.178.0/24
+        - 154.62.179.0/24
+        - 185.82.75.0/24
+        - 185.196.94.0/24
+        - 213.249.130.0/24
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

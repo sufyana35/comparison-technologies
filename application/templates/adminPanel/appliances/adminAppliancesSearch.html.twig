@@ -1,0 +1,65 @@
+{% extends 'adminPanel/adminBase.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+{% block menuTitle %}{{ page_name }}{% endblock %}
+
+{% block body %}
+    <div id="header-under">
+        <form action="/admin/appliances/search" method="get">
+            <input autocomplete="off" class="input ui-autocomplete-input" id="search-appliances" maxlength="60" name="q" placeholder="Search appliances..." required="" type="text">
+            <button class="button info float-left" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    
+        <select onchange="window.location.href = this.options[this.selectedIndex].value;">
+            <option value="/admin/appliances/search?q={{ search_term }}&amp;order=1&amp;page=1" {{ order == 1 ? 'selected="selected"' : '' }}>Order by Name - A to Z</option>
+            <option value="/admin/appliances/search?q={{ search_term }}&amp;order=2&amp;page=1" {{ order == 2 ? 'selected="selected"' : '' }}>Order by Name - Z to A</option>
+	    </select>
+        <select onchange="window.location.href = this.options[this.selectedIndex].value;">
+            {% for i in 1..number_of_pages %}
+                <option value='/admin/appliances/search?q={{ search_term }}&amp;order={{ order }}&amp;page={{ i }}' {{ i == page_number ? 'selected="selected"' : '' }}>Page {{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <div class="clear"></div>
+    </div>
+
+    <p>{{ appliances_count }} results found for "{{ search_term }}" (20 per page)...</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:5%;">ID</th>
+                <th style="width:10%;">SKU</th>
+                <th style="width:30%;">URL</th>
+                <th style="width:30%;">Name</th>
+                <th class="text" style="width:15%;">Created At</th>
+                <th class="text-right" style="width:15%;">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for appliance in appliances %}
+                    <tbody>
+						<tr>
+							<td>{{ appliance.id }}</td>
+                            <td>{{ appliance.sku }}</td>
+							<td>{{ appliance.slug }}</td>
+                            <td>{{ appliance.name }}</td>
+                            <td>{{ appliance.createdAt ? getFormattedCurentDateAndTime(appliance.createdAt) : null }}</td>
+							<td class="text-right">
+								<a class="button info" href="/admin/appliances/manage/{{ appliance.id }}">Edit</a>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <a class="button danger" href="/admin/appliances/delete/{{ appliance.id }}" onclick="return confirm('Are you sure you want to delete the Appliance \'{{ appliance.name }}\'?');">Delete</a>
+                                {% endif %}
+							</td>
+						</tr>
+					</tbody>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="buttons">
+        <a class="button warning" href="/admin/appliances">Back to Appliances</a>
+    </div>
+{% endblock %}

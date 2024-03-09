@@ -1,0 +1,4 @@
+login:
+    path: coinCalculator
+    controller: App\Controller\CoinCalculatorController::login
+    methods: GET|POST

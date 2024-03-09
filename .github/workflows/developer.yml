@@ -1,0 +1,46 @@
+name: Local Development CI
+on:
+  push:
+    branches:
+      - feature/**
+      - bug/**
+      - main
+
+jobs:
+  symfony:
+    name: Comparisson Technologies run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Set-up PHP 8.1 with required extensions
+      - name: Setup PHP, extensions and composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: json, pdo
+
+      # Composer
+      - name: Install Composer dependencies
+        working-directory: ./application
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      # PHPStan
+      - name: Analyse PHP Code (PHPStan)
+        working-directory: ./application
+        run: vendor/bin/phpstan analyse --configuration=phpstan.dist.neon --error-format=github
+
+      # PHPCodeSniffer
+      - name: Analyse PHP Code (PHPCodeSniffer)
+        working-directory: ./application
+        run: vendor/bin/phpcs src --standard=PSR12 --report=full --report-width=120 --colors -p
+
+      # Tests
+      # - name: Run unit and functional tests
+      #   run: |
+      #     php bin/phpunit --stop-on-failure
+      #
+      # - name: Run Behat/Mink tests
+      #  run: |
+      #    php vendor/bin/behat

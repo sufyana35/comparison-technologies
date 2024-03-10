@@ -30,8 +30,7 @@ docker compose down
 docker system prune -a (emoves images, containers, volumes, and networks)
 docker compose up
 ```
-
-* future enhancements
+### future enhancements
 ```
 ability to work with any currency
 In hindsight I should have probaly used an array value to store the different coins and the amount of coins required as this should make it easier to add more denomination coins

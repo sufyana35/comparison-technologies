@@ -7,7 +7,7 @@ use App\Model\Coins;
 
 class CoinsTest extends TestCase
 {
-    public function testMinimumCoinsNeededToEqualAmount_PoundsFormat()
+    public function testMinimumCoinsNeededToEqualAmount_PoundsFormat(): void
     {
         $coins = new Coins();
         $coins->minimumCoinsNeededToEqualAmount("£1.23");

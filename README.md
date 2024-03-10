@@ -13,7 +13,6 @@ A white label product for all applications
 
 ### Local/Codespace Installtion & SetUp
 * How to run the program
-* Create CodeSpace on Github
 ```
 Install Visual Studio extensions like docker
 Run docker compose up
@@ -32,6 +31,12 @@ docker system prune -a (emoves images, containers, volumes, and networks)
 docker compose up
 ```
 
+* future enhancements
+```
+ability to work with any currency
+In hindsight I should have probaly used an array value to store the different coins and the amount of coins required as this should make it easier to add more denomination coins
+```
+
 ### Useful Composer Commands
 Run In Application Directory
 
@@ -40,5 +45,6 @@ Run In Application Directory
 | ``` ./vendor/bin/phpcs src --standard=PSR12 --report=full --report-width=120 --colors -p ```      | View Codesniffer Report And suggestions |
 | ``` ./vendor/bin/phpcbf src --standard=PSR12 --report=full --report-width=120 --colors -p ```     | Auto CodeSniffer Fixer |
 | ``` ./vendor/bin/phpstan analyse --configuration=phpstan.dist.neon ```                            | PHPStan Analyzer |
+| ``` ./vendor/bin/phpunit ```                                                                      | PHPUnit |
 
 

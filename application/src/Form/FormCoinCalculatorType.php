@@ -8,8 +8,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class FormCoinCalculatorType extends AbstractType
 {
@@ -19,19 +17,25 @@ class FormCoinCalculatorType extends AbstractType
             ->add('amountInput', TextType::class, [
                 'label' => 'Amount:',
                 'attr' => [
-                    'class' => 'input',
+                    'class' => 'form-control',
                     'maxlength' => 255
+                ],
+                'label_attr' => [
+                    'class' => 'form-label',
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Calculate Minimum Coins Required:'
+                'label' => 'Calculate Minimum Coins Required',
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ],
             ])
         ;
     }
 
     /**
      * @param OptionsResolver $resolver
-     * 
+     *
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void

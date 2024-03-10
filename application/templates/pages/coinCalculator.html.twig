@@ -22,37 +22,35 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row mt-2">
                 <div class="col">
                     {{ form_widget(coinCalculatorForm.submit) }}
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col">
-                    <div class="row">
-                        <p>£2</p>
-                    </div>
-                    <div class="row">
-                        {{ coinCalculatorForm.vars.value.twoPounds }}
-                    </div>
-                </div>
-                <div class="col">
-                    {{ coinCalculatorForm.vars.value.onePounds }}
-                </div>
-                <div class="col">
-                    {{ coinCalculatorForm.vars.value.fiftyPences }}
-                </div>
-                <div class="col">
-                    {{ coinCalculatorForm.vars.value.twentyPences }}
-                </div>
-                <div class="col">
-                    {{ coinCalculatorForm.vars.value.twoPences }}
-                </div>
-                <div class="col">
-                    {{ coinCalculatorForm.vars.value.onePences }}
-                </div>
-            </div>
+            <table class="table caption-top mt-4">
+                <caption>List of users</caption>
+                <thead>
+                    <tr>
+                    <th scope="col">2 Pound</th>
+                    <th scope="col">1 Pound</th>
+                    <th scope="col">50 Pences</th>
+                    <th scope="col">20 Pences</th>
+                    <th scope="col">2 Pences</th>
+                    <th scope="col">1 Pences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ coinCalculatorForm.vars.value.twoPounds }}</td>
+                        <td>{{ coinCalculatorForm.vars.value.onePounds }}</td>
+                        <td>{{ coinCalculatorForm.vars.value.fiftyPences }}</td>
+                        <td>{{ coinCalculatorForm.vars.value.twentyPences }}</td>
+                        <td>{{ coinCalculatorForm.vars.value.twoPences }}</td>
+                        <td>{{ coinCalculatorForm.vars.value.onePences }}</td>
+                    </tr>
+                </tbody>
+                </table>
         {{ form_end(coinCalculatorForm) }}
     </div>
 </main>

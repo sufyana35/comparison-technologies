@@ -13,7 +13,7 @@ class CoinCalculatorController extends AbstractController
 {
     /**
      * Coin Calculator homepage
-     * 
+     *
      * @param Request $request
      * @param ValidatorInterface $validator
      *
@@ -21,14 +21,13 @@ class CoinCalculatorController extends AbstractController
      */
     public function coinCalculator(Request $request, ValidatorInterface $validator): Response
     {
-        $coinCalculatorForm = $this->createForm(FormCoinCalculatorType::class, new Coins);
+        $coinCalculatorForm = $this->createForm(FormCoinCalculatorType::class, new Coins());
         $coinCalculatorForm->handleRequest($request);
 
         if ($coinCalculatorForm->isSubmitted() && $coinCalculatorForm->isValid()) {
             $coins = $coinCalculatorForm->getData();
 
             $coins = $coins->minimumCoinsNeededToEqualAmount($coins->getAmountInput());
-
         }
 
         $errors = $validator->validate($coinCalculatorForm);
@@ -36,7 +35,7 @@ class CoinCalculatorController extends AbstractController
         return $this->render('pages/coinCalculator.html.twig', [
             'page_name'          => 'Coin Calculator',
             'coinCalculatorForm' => $coinCalculatorForm,
-            'errors' => $errors ?? null
+            'errors' => $errors
         ]);
     }
 }

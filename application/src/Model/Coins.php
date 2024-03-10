@@ -53,7 +53,7 @@ class Coins
      * User set input amount
      *
      * @param string $amountInput
-     * 
+     *
      * @return static
      */
     public function setAmountInput(string $amountInput): static
@@ -77,7 +77,7 @@ class Coins
      * Set number of £2 pound coins
      *
      * @param integer $twoPounds
-     * 
+     *
      * @return static
      */
     public function setTwoPounds(int $twoPounds): static
@@ -101,7 +101,7 @@ class Coins
      * Set number of £1 pound coins
      *
      * @param integer $onePounds
-     * 
+     *
      * @return static
      */
     public function setOnePounds(int $onePounds): static
@@ -125,7 +125,7 @@ class Coins
      * Set number of 50 pence coins
      *
      * @param integer $fiftyPences
-     * 
+     *
      * @return static
      */
     public function setFiftyPences(int $fiftyPences): static
@@ -149,7 +149,7 @@ class Coins
      * Set number of 20 pence coins
      *
      * @param integer $twentyPences
-     * 
+     *
      * @return static
      */
     public function setTwentyPences(int $twentyPences): static
@@ -173,7 +173,7 @@ class Coins
      * Set number of 2 pence coins
      *
      * @param integer $twoPences
-     * 
+     *
      * @return static
      */
     public function setTwoPences(int $twoPences): static
@@ -197,12 +197,12 @@ class Coins
      * Set number of 1 pence coins
      *
      * @param integer $onePences
-     * 
+     *
      * @return static
      */
     public function setOnePences(int $onePences): static
     {
-        $this->twoPences = $onePences;
+        $this->onePences = $onePences;
 
         return $this;
     }
@@ -210,11 +210,28 @@ class Coins
     public function minimumCoinsNeededToEqualAmount(string $amount): void
     {
         $isAmountInPounds = (bool) CurrencyConverter::isAmountInPounds($amount);
-        $formattedCurrency = CurrencyConverter::formatCurrency($amount, $isAmountInPounds);
+        $formattedCurrency = (float) CurrencyConverter::formatCurrency($amount, $isAmountInPounds);
 
-        $currencyInPence = $isAmountInPounds ? CurrencyConverter::convertPoundsToPence($formattedCurrency) : $formattedCurrency;
+        $currencyInPence = $isAmountInPounds
+            ? CurrencyConverter::convertPoundsToPence($formattedCurrency)
+            : $formattedCurrency;
 
-        dump($currencyInPence / 200);
+        $this->setTwoPounds(intval($currencyInPence / 200));
+        $leftOver = $currencyInPence - ($this->getTwoPounds() * 200);
 
+        $this->setOnePounds(intval($leftOver / 100));
+        $leftOver = $leftOver - ($this->getOnePounds() * 100);
+
+        $this->setFiftyPences(intval($leftOver / 50));
+        $leftOver = $leftOver - ($this->getFiftyPences() * 50);
+
+        $this->setTwentyPences(intval($leftOver / 20));
+        $leftOver = $leftOver - ($this->getTwentyPences() * 20);
+
+        $this->setTwoPences(intval($leftOver / 2));
+        $leftOver = $leftOver - ($this->getTwoPences() * 2);
+
+        $this->setOnePences(intval($leftOver / 1));
+        $leftOver = $leftOver - ($this->getOnePences() * 1);
     }
 }
